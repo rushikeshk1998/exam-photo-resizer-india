@@ -11,6 +11,8 @@ const PRESETS = [
   { id: 'mpsc-photo', group: 'MPSC', name: 'MPSC Photo (3.5 × 4.5 cm)', short: 'MPSC photo', doc: 'photo', w: 276, h: 354, dpi: 200, minKb: 20, maxKb: 50, fmt: 'image/jpeg', note: 'Verify the current advertisement and portal requirements.' },
   { id: 'mpsc-signature', group: 'MPSC', name: 'MPSC Signature (3.5 × 1.5 cm)', short: 'MPSC signature', doc: 'signature', w: 276, h: 118, dpi: 200, minKb: 10, maxKb: 20, fmt: 'image/jpeg', enhance: 'signature', note: 'Verify exact dimensions before upload.' },
   { id: 'nta-photo', group: 'NTA', name: 'NTA Passport Photo (example)', short: 'NTA photo', doc: 'photo', w: 276, h: 354, dpi: 200, minKb: 10, maxKb: 200, fmt: 'image/jpeg', note: 'NTA specs differ by exam and session. Use the information bulletin.' },
+  { id: 'rrb-photo', group: 'RRB', name: 'RRB Photo (200 × 230 px example)', short: 'RRB photo', doc: 'photo', w: 200, h: 230, dpi: 200, minKb: 20, maxKb: 50, fmt: 'image/jpeg', note: 'RRB recruitment photo sizes vary by exam. 200 × 230 pixels passport size is common, but check the current notice.' },
+  { id: 'passport-photo', group: 'Passport', name: 'Passport Size Photo (4.5 × 3.5 cm, 300 DPI)', short: 'Passport photo', doc: 'photo', w: 531, h: 413, dpi: 300, minKb: 20, maxKb: 100, fmt: 'image/jpeg', note: 'Common passport size photo. Agencies ask for different sizes, so check the requirement before you upload.' },
   { id: 'nsdl-pan-photo', group: 'PAN', name: 'NSDL PAN Photo (276 × 197 px @ 200 DPI)', short: 'NSDL photo', doc: 'photo', w: 276, h: 197, dpi: 200, minKb: 10, maxKb: 50, fmt: 'image/jpeg', note: 'Approximate preset. Confirm NSDL requirements before upload.' },
   { id: 'nsdl-pan-signature', group: 'PAN', name: 'NSDL PAN Signature (157 × 354 px @ 200 DPI)', short: 'NSDL signature', doc: 'signature', w: 157, h: 354, dpi: 200, minKb: 10, maxKb: 50, fmt: 'image/jpeg', enhance: 'signature', note: 'Approximate preset. Confirm exact NSDL signature requirements.' },
   { id: 'uti-pan-photo', group: 'PAN', name: 'UTI PAN Photo (213 × 213 px)', short: 'UTI photo', doc: 'photo', w: 213, h: 213, dpi: 300, minKb: 3, maxKb: 30, fmt: 'image/jpeg', note: 'UTIITSL requirements can be strict. Verify the final file in the portal.' },
@@ -74,6 +76,19 @@ function applyTheme(theme) {
 }
 function toggleTheme() { const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; localStorage.setItem('theme', next); applyTheme(next); }
 
+function syncOptionalBlocks(){
+  // Open the cleanup panel automatically for the document types that need it.
+  const block = document.getElementById('cleanupBlock');
+  if (!block || !els.docType) return;
+  const doc = els.docType.value;
+  const needsCleanup = doc === 'signature' || doc === 'declaration' || doc === 'thumb';
+  if (needsCleanup) {
+    block.open = true;
+    if (els.enhanceOn && els.enhanceMode) els.enhanceOn.checked = els.enhanceMode.value !== 'off';
+  } else if (!els.enhanceOn || !els.enhanceOn.checked) {
+    block.open = false;
+  }
+}
 function presetById(id) { return PRESETS.find((p) => p.id === id); }
 function renderPresetChips(){
   const box = document.getElementById('presetChips');
@@ -138,6 +153,7 @@ function applyPreset(p) {
   syncing = false;
   updateCropAspect();
   drawCropPreview();
+  syncOptionalBlocks();
 }
 
 function syncFromPx(source) {
@@ -510,6 +526,7 @@ function bindEvents() {
   if (els.thickness) els.thickness.addEventListener('input', () => { if(els.thicknessVal) els.thicknessVal.textContent = els.thickness.value; });
   if (els.contrast) els.contrast.addEventListener('input', () => { if(els.contrastVal) els.contrastVal.textContent = els.contrast.value + '%'; });
   if (els.enhanceMode) els.enhanceMode.addEventListener('change', () => { if(els.enhanceOn) els.enhanceOn.checked = els.enhanceMode.value !== 'off'; });
+  if (els.docType) els.docType.addEventListener('change', syncOptionalBlocks);
   if (els.processBtn) els.processBtn.addEventListener('click', processImage);
   if (els.downloadBtn) els.downloadBtn.addEventListener('click', downloadOutput);
   if (els.resetBtn) els.resetBtn.addEventListener('click', resetAll);

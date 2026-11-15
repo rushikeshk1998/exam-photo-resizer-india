@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="mr" href="https://rushikeshk1998.github.io/exam-photo-resizer-india/mpsc-photo-resizer-mr.html" />
 <link rel="alternate" hreflang="en" href="https://rushikeshk1998.github.io/exam-photo-resizer-india/mpsc-photo-resizer.html" />
 <link rel="alternate" hreflang="x-default" href="https://rushikeshk1998.github.io/exam-photo-resizer-india/mpsc-photo-resizer.html" />
-<link rel="stylesheet" href="./styles.css?v=6" />
+<link rel="stylesheet" href="./styles.css?v=7" />
 </head>
 <body>
 <a class="skip" href="#tool">टूलकडे जा</a>
@@ -19,8 +19,9 @@
   <div class="wrap head-in">
     <a class="brand" href="./mpsc-photo-resizer-mr.html"><span class="brand-dot" aria-hidden="true"></span>फोटो रीसायजर</a>
     <nav class="head-nav" aria-label="मुख्य">
-      <a href="./index.html">सर्व टूल</a>
+      <a href="./">सर्व टूल</a>
       <a href="./mpsc-photo-resizer.html">English</a>
+      <a href="./photo-size-converter.html">साइज कन्वर्टर</a>
       <a href="./ibps-sbi-kit.html">4 फाइल किट</a>
       <a href="./contact.html">संपर्क</a>
     </nav>
@@ -44,10 +45,18 @@
   </div>
 
   <div id="tool" class="tool">
+
+    <section class="card upload-card">
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" aria-label="Choose an image file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>फोटो निवडा</b>
+        <span>किंवा JPG, PNG, WebP इथे ओढा</span>
+      </label>
+    </section>
     <section class="card">
       <div class="card-head">
         <h2>फाइलची सेटिंग</h2>
-        <p class="note" id="presetNote"></p>
+        <p class="note" id="presetNote">प्रीसेट निवडल्यावर साइज, DPI आणि फाइल आकार आपोआप भरले जातील.</p>
       </div>
 
       <div class="field">
@@ -104,18 +113,16 @@
         <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> किमान KB साठी हलके नॉईज जोडा</label>
       </fieldset>
 
-      <fieldset>
-        <legend>नाव आणि तारीख</legend>
+      <details class="fieldset" id="slateBlock"><summary>नाव आणि तारीख</summary>
         <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> फोटोवर नाव आणि तारीख छापा</label>
         <div class="grid2">
           <div class="field"><label for="slateName">उमेदवाराचे नाव</label><input id="slateName" type="text" autocomplete="name" placeholder="फॉर्ममधील नाव" /></div>
           <div class="field"><label for="slateDate">फोटोची तारीख</label><input id="slateDate" type="date" /></div>
         </div>
         <div class="field"><label for="slateText">स्वतःचा मजकूर</label><input id="slateText" type="text" placeholder="रिकामे ठेवल्यास नाव आणि तारीख वापरले जातील" /></div>
-      </fieldset>
+      </details>
 
-      <fieldset>
-        <legend>स्वाक्षरी आणि कागदपत्र साफसफी</legend>
+      <details class="fieldset" id="cleanupBlock"><summary>स्वाक्षरी आणि कागदपत्र साफसफी</summary>
         <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> साफसफी चालू करा</label>
         <div class="grid2">
           <div class="field">
@@ -132,13 +139,14 @@
           <div class="field"><label for="thickness">शाईप जाडी <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
           <div class="field"><label for="contrast">कंट्रास्ट <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
         </div>
-      </fieldset>
+      </details>
 
       <div class="actions">
         <button id="processBtn" class="btn btn-primary" type="button" disabled>फाइल तयार करा</button>
         <button id="downloadBtn" class="btn" type="button" disabled>डाउनलोड</button>
         <button id="resetBtn" class="btn" type="button">रीसेट</button>
       </div>
+      <p class="privacy-note">तुमची फाइल या पानाबाहेर जात नाही. ती तुमच्या ब्राउझरमध्येच बदलली जाते आणि कोणत्याही सर्व्हरवर अपलोड होत नाही.</p>
       <p id="status" class="status" role="status" aria-live="polite"></p>
     </section>
 
@@ -148,11 +156,6 @@
         <p class="note">डावीकडे मूळ फोटो, उजवीकडे तयार फाइल.</p>
       </div>
 
-      <label class="drop" id="dropZone">
-        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
-        <b>फोटो निवडा</b>
-        <span>किंवा JPG, PNG, WebP इथे ओढा</span>
-      </label>
 
       <div class="crop" id="cropPanel" hidden>
         <h3>क्रॉप</h3>
@@ -223,7 +226,7 @@
 
     <h2>इतर टूल</h2>
     <ul class="linklist">
-      <li><a class="btn btn-sm" href="./index.html">सर्व टूल</a></li>
+      <li><a class="btn btn-sm" href="./">सर्व टूल</a></li>
       <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">English version</a></li>
       <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI 4 फाइल किट</a></li>
       <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC फोटो रीसायजर</a></li>
@@ -248,8 +251,9 @@
         <h3>टूल</h3>
         <ul>
           <li><a href="./mpsc-photo-resizer-mr.html">MPSC फोटो</a></li>
-          <li><a href="./index.html">सर्व टूल</a></li>
-          <li><a href="./ibps-sbi-kit.html">4 फाइल किट</a></li>
+          <li><a href="./">सर्व टूल</a></li>
+          <li><a href="./photo-size-converter.html">साइज कन्वर्टर</a>
+      <a href="./ibps-sbi-kit.html">4 फाइल किट</a></li>
           <li><a href="./ssc-photo-resizer.html">SSC फोटो</a></li>
         </ul>
       </div>
@@ -268,7 +272,7 @@
   </div>
 </footer>
 
-<script src="./zip-store.js?v=6"></script>
-<script src="./app.js?v=6"></script>
+<script src="./zip-store.js?v=7"></script>
+<script src="./app.js?v=7"></script>
 </body>
 </html>

@@ -15,7 +15,7 @@
 <meta property="og:description" content="Resize photos and signatures for MPSC, Maharashtra Police Bharti and other Maharashtra exams to 3.5 x 4.5 cm (276 x 354 px at 200 DPI) and the required file size. Free, no upload." />
 <meta property="og:url" content="https://rushikeshk1998.github.io/exam-photo-resizer-india/mpsc-photo-resizer.html" />
 <meta name="twitter:card" content="summary" />
-<link rel="stylesheet" href="./styles.css?v=6" />
+<link rel="stylesheet" href="./styles.css?v=7" />
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -54,12 +54,13 @@
 
 <header class="site-head">
   <div class="wrap head-in">
-    <a class="brand" href="./index.html"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
+    <a class="brand" href="./"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
     <nav class="head-nav" aria-label="Main">
       <a href="./ssc-photo-resizer.html">SSC photo</a>
       <a href="./ssc-signature-resizer.html">SSC signature</a>
       <a href="./ibps-signature-resizer.html">IBPS signature</a>
       <a href="./pan-photo-signature-resizer.html">PAN</a>
+      <a href="./photo-size-converter.html">Size converter</a>
       <a href="./ibps-sbi-kit.html">4-file kit</a>
     </nav>
     <div class="head-tools">
@@ -82,10 +83,18 @@
   </div>
 
   <div id="tool" class="tool">
+
+    <section class="card upload-card">
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" aria-label="Choose an image file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>Choose an image</b>
+        <span>or drag and drop JPG, PNG or WebP</span>
+      </label>
+    </section>
     <section class="card">
       <div class="card-head">
         <h2>Image settings</h2>
-        <p class="note" id="presetNote"></p>
+        <p class="note" id="presetNote">प्रीसेट निवडल्यावर साइज, DPI आणि फाइल आकार आपोआप भरले जातील.</p>
       </div>
 
       <div class="field">
@@ -141,18 +150,16 @@
         <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> Reach the minimum KB by adding light noise</label>
       </fieldset>
 
-      <fieldset>
-        <legend>Name and date strip</legend>
+      <details class="fieldset" id="slateBlock"><summary>Name and date strip</summary>
         <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> Print name and date on the image</label>
         <div class="grid2">
           <div class="field"><label for="slateName">Candidate name</label><input id="slateName" type="text" autocomplete="name" placeholder="Name as in the form" /></div>
           <div class="field"><label for="slateDate">Date of photo</label><input id="slateDate" type="date" /></div>
         </div>
         <div class="field"><label for="slateText">Custom strip text</label><input id="slateText" type="text" placeholder="Leave blank to use name and date" /></div>
-      </fieldset>
+      </details>
 
-      <fieldset>
-        <legend>Signature and document cleanup</legend>
+      <details class="fieldset" id="cleanupBlock"><summary>Signature and document cleanup</summary>
         <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> Enable cleanup</label>
         <div class="grid2">
           <div class="field">
@@ -169,13 +176,14 @@
           <div class="field"><label for="thickness">Ink thickness <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
           <div class="field"><label for="contrast">Contrast <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
         </div>
-      </fieldset>
+      </details>
 
       <div class="actions">
         <button id="processBtn" class="btn btn-primary" type="button" disabled>Resize image</button>
         <button id="downloadBtn" class="btn" type="button" disabled>Download</button>
         <button id="resetBtn" class="btn" type="button">Reset</button>
       </div>
+      <p class="privacy-note">तुमची फाइल या पानाबाहेर जात नाही. ती तुमच्या ब्राउझरमध्येच बदलली जाते आणि कोणत्याही सर्व्हरवर अपलोड होत नाही.</p>
       <p id="status" class="status" role="status" aria-live="polite"></p>
     </section>
 
@@ -185,11 +193,6 @@
         <p class="note">Original on the left, resized file on the right.</p>
       </div>
 
-      <label class="drop" id="dropZone">
-        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
-        <b>Choose an image</b>
-        <span>or drag and drop JPG, PNG or WebP</span>
-      </label>
 
       <div class="crop" id="cropPanel" hidden>
         <h3>Crop</h3>
@@ -268,7 +271,7 @@
   <section class="content">
     <h2>Related tools</h2>
     <ul class="linklist">
-      <li><a class="btn btn-sm" href="./index.html">All tools</a></li>
+      <li><a class="btn btn-sm" href="./">All tools</a></li>
       <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
       <li><a class="btn btn-sm" href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
       <li><a class="btn btn-sm" href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
@@ -297,14 +300,15 @@
           <li><a href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
           <li><a href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
           <li><a href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+          <li><a href="./photo-size-converter.html">Photo size converter</a></li>
           <li><a href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
         </ul>
       </div>
       <div>
         <h3>Information</h3>
         <ul>
-          <li><a href="./index.html#faq">FAQ</a></li>
-          <li><a href="./index.html#sizes">Size table</a></li>
+          <li><a href="./#faq">FAQ</a></li>
+          <li><a href="./#sizes">Size table</a></li>
           <li><a href="./privacy.html">Privacy policy</a></li>
           <li><a href="./contact.html">Contact</a></li>
         </ul>
@@ -317,7 +321,7 @@
   </div>
 </footer>
 
-<script src="./zip-store.js?v=6"></script>
-<script src="./app.js?v=6"></script>
+<script src="./zip-store.js?v=7"></script>
+<script src="./app.js?v=7"></script>
 </body>
 </html>

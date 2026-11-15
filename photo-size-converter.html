@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-preset="passport-photo">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Photo Size Converter — cm to Pixels, DPI and KB for Any Form</title>
+<meta name="description" content="Free photo size converter and KB reducer. Convert centimetres to pixels at 96, 150, 200 and 300 DPI, resize a passport size photo, and bring the file to the exact KB an exam or portal asks for. Works in your browser." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="canonical" href="https://rushikeshk1998.github.io/exam-photo-resizer-india/photo-size-converter.html" />
+<meta property="og:type" content="content" />
+<meta property="og:title" content="Photo Size Converter — cm to Pixels, DPI and KB for Any Form" />
+<meta property="og:description" content="Free photo size converter and KB reducer. Convert centimetres to pixels at 96, 150, 200 and 300 DPI, resize a passport size photo, and bring the file to the exact KB an exam or portal asks for. Works in your browser." />
+<meta property="og:url" content="https://rushikeshk1998.github.io/exam-photo-resizer-india/photo-size-converter.html" />
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="./styles.css?v=7" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How do I convert centimetres to pixels?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Multiply the centimetres by the DPI and divide by 2.54. At 200 DPI, 3.5 cm is 276 pixels and 4.5 cm is 354 pixels."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I reduce a photo to exactly 50 KB?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Resize to the required pixel size, save as JPG, then step the quality down until the file is 50 KB or less. The pixel size stays exactly what the portal asked for."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the difference between DPI and pixels?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pixels are the width and height of the image. DPI says how many dots fit in an inch, which decides the physical print size that the portal calculates."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I convert a photo to 20 KB for an exam form?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, as long as the pixel size stays exactly as required. If the file will not go below the maximum even at low quality, use a plainer background."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="./"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="./ssc-photo-resizer.html">SSC photo</a>
+      <a href="./ssc-signature-resizer.html">SSC signature</a>
+      <a href="./ibps-signature-resizer.html">IBPS signature</a>
+      <a href="./pan-photo-signature-resizer.html">PAN</a>
+      <a href="./photo-size-converter.html">Size converter</a>
+      <a href="./ibps-sbi-kit.html">4-file kit</a>
+    </nav>
+    <div class="head-tools">
+      <button id="themeToggle" class="btn btn-sm" type="button" aria-label="Switch between light and dark mode">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Photo size converter &#183; KB reducer &#183; DPI converter</p>
+    <h1>Photo size converter: cm to pixels, DPI and KB</h1>
+    <p>A free photo size converter that also works as a KB reducer and a DPI converter. Convert centimetres to pixels at 96, 150, 200 or 300 DPI, resize a passport size photo, or bring a file down to the exact KB that SSC, IBPS, SBI, UPSC, RRB, MPSC, NTA or a PAN portal asks for. Your photo stays on your device.</p>
+    <p>Pick the SSC preset below, upload the photo taken on your phone, and the file is resized, compressed and given the right DPI in one step. Nothing is uploaded to a server.</p>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>Ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <div id="tool" class="tool">
+
+    <section class="card upload-card">
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" aria-label="Choose an image file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>Choose an image</b>
+        <span>or drag and drop JPG, PNG or WebP</span>
+      </label>
+    </section>
+    <section class="card">
+      <div class="card-head">
+        <h2>Image settings</h2>
+        <p class="note" id="presetNote">Choose a preset to fill in the size, DPI and file size limits.</p>
+      </div>
+
+      <div class="field">
+        <label for="presetSelect">Exam or portal</label>
+        <select id="presetSelect"></select>
+        <details class="preset-more">
+          <summary>Show all presets</summary>
+          <div class="presets" id="presetChips" role="group" aria-label="Common presets"></div>
+        </details>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="docType">Document type</label>
+          <select id="docType">
+            <option value="photo">Photo</option>
+            <option value="signature">Signature</option>
+            <option value="thumb">Thumb impression</option>
+            <option value="declaration">Handwritten declaration</option>
+            <option value="document">Other document</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">File format</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Size</legend>
+        <div class="grid3">
+          <div class="field"><label for="widthPx">Width (px)</label><input id="widthPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="heightPx">Height (px)</label><input id="heightPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="dpi">DPI</label><input id="dpi" type="number" min="72" inputmode="numeric" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="widthCm">Width (cm)</label><input id="widthCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+          <div class="field"><label for="heightCm">Height (cm)</label><input id="heightCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+        </div>
+        <label class="check" for="lockAspect"><input id="lockAspect" type="checkbox" /> Keep the aspect ratio of the original photo</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>File size</legend>
+        <div class="grid3">
+          <div class="field"><label for="minKb">Minimum KB</label><input id="minKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="maxKb">Maximum KB</label><input id="maxKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label class="check" for="autoCompress"><input id="autoCompress" type="checkbox" checked /> Target KB</label></div>
+        </div>
+        <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> Reach the minimum KB by adding light noise</label>
+      </fieldset>
+
+      <details class="fieldset" id="slateBlock"><summary>Name and date strip</summary>
+        <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> Print name and date on the image</label>
+        <div class="grid2">
+          <div class="field"><label for="slateName">Candidate name</label><input id="slateName" type="text" autocomplete="name" placeholder="Name as in the form" /></div>
+          <div class="field"><label for="slateDate">Date of photo</label><input id="slateDate" type="date" /></div>
+        </div>
+        <div class="field"><label for="slateText">Custom strip text</label><input id="slateText" type="text" placeholder="Leave blank to use name and date" /></div>
+      </details>
+
+      <details class="fieldset" id="cleanupBlock"><summary>Signature and document cleanup</summary>
+        <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> Enable cleanup</label>
+        <div class="grid2">
+          <div class="field">
+            <label for="enhanceMode">Mode</label>
+            <select id="enhanceMode">
+              <option value="signature">Signature &mdash; darker and thicker strokes</option>
+              <option value="scan">Document &mdash; whiter background</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="field"><label for="threshold">Threshold <span id="thresholdVal">160</span></label><input id="threshold" type="range" min="80" max="220" value="160" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="thickness">Ink thickness <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
+          <div class="field"><label for="contrast">Contrast <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
+        </div>
+      </details>
+
+      <div class="actions">
+        <button id="processBtn" class="btn btn-primary" type="button" disabled>Resize image</button>
+        <button id="downloadBtn" class="btn" type="button" disabled>Download</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+      </div>
+      <p class="privacy-note">Your file never leaves this page. It is resized in your browser and is not uploaded to any server.</p>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Preview</h2>
+        <p class="note">Original on the left, resized file on the right.</p>
+      </div>
+
+
+      <div class="crop" id="cropPanel" hidden>
+        <h3>Crop</h3>
+        <p class="help">Drag the image to move it. Use zoom to match the output ratio.</p>
+        <canvas id="cropCanvas" class="crop-canvas"></canvas>
+        <div class="crop-row">
+          <div class="field"><label for="cropZoom">Zoom <span id="cropZoomVal">100%</span></label><input id="cropZoom" type="range" min="100" max="300" value="100" /></div>
+          <div class="actions" style="margin:0;">
+            <button id="cropCenterBtn" class="btn btn-sm" type="button">Centre</button>
+            <button id="cropFitBtn" class="btn btn-sm" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <figcaption>Original</figcaption>
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalMeta" class="meta"></div>
+        </figure>
+        <figure>
+          <figcaption>Resized file</figcaption>
+          <canvas id="outputCanvas"></canvas>
+          <div id="outputMeta" class="meta"></div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="content">
+    <h2>Photo size converter table</h2>
+    <p>Multiply the size in centimetres by the DPI and divide by 2.54 to get pixels. These are the sizes that come up most often in Indian exam and document forms.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Size</th><th>At 96 DPI</th><th>At 150 DPI</th><th>At 200 DPI</th><th>At 300 DPI</th></tr></thead>
+        <tbody>
+          <tr><td>2 × 2 cm</td><td>76 × 76</td><td>118 × 118</td><td>157 × 157</td><td>236 × 236</td></tr>
+          <tr><td>3 × 4 cm</td><td>113 × 151</td><td>177 × 236</td><td>236 × 315</td><td>354 × 472</td></tr>
+          <tr><td>3.5 × 4.5 cm</td><td>132 × 170</td><td>207 × 266</td><td>276 × 354</td><td>413 × 531</td></tr>
+          <tr><td>3.5 × 2.5 cm</td><td>132 × 94</td><td>207 × 148</td><td>276 × 197</td><td>413 × 295</td></tr>
+          <tr><td>4.5 × 3.5 cm</td><td>170 × 132</td><td>266 × 207</td><td>354 × 276</td><td>531 × 413</td></tr>
+          <tr><td>35 × 45 mm</td><td>132 × 170</td><td>207 × 266</td><td>276 × 354</td><td>413 × 531</td></tr>
+          <tr><td>51 × 51 mm</td><td>193 × 193</td><td>301 × 301</td><td>402 × 402</td><td>602 × 602</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>KB converter: how to hit an exact file size</h2>
+    <p>Most portals do not accept a file that is too heavy or too light. They say something like "the file size should be between 20 KB and 50 KB" and the upload box checks it.</p>
+    <p>JPG file size depends on three things: the number of pixels, the JPEG quality, and how much detail the picture has. So a KB converter cannot work on a file that is already compressed. The way to change it is:</p>
+    <ol>
+      <li>Resize to the exact pixel size the portal wants. This is the biggest lever, because every extra pixel adds bytes.</li>
+      <li>Save as JPG, not PNG. A PNG of the same photo is often 5 to 10 times heavier.</li>
+      <li>Lower the quality in small steps until the file lands inside the range. The tool does this automatically.</li>
+      <li>If the file is still under the minimum, which happens with tiny images such as a 140 × 60 pixel signature, turn on the light noise option to add the missing bytes.</li>
+    </ol>
+    <p>Because the pixel count stays exactly what the portal asked for, the file always passes the size check.</p>
+
+    <h2>DPI converter: why the number in the notification matters</h2>
+    <p>DPI is dots per inch. It tells the portal how large the photo will print, and many portals read it from the JPG header. A 3.5 × 4.5 cm photo at 200 DPI is 276 × 354 pixels, but the same photo at 300 DPI is 413 × 531 pixels and takes up more space in the file.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>What the notice says</th><th>What to enter</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>3.5 × 4.5 cm</td><td>200 DPI</td><td>276 × 354 pixels</td></tr>
+          <tr><td>3.5 × 4.5 cm</td><td>300 DPI</td><td>413 × 531 pixels</td></tr>
+          <tr><td>200 × 230 pixels</td><td>200 DPI</td><td>4.5 × 3.5 cm</td></tr>
+          <tr><td>140 × 60 pixels</td><td>200 DPI</td><td>3.5 × 1.5 cm</td></tr>
+          <tr><td>213 × 213 pixels</td><td>300 DPI</td><td>1.8 × 1.8 cm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The tool writes the DPI into the file header when it exports the JPG, so the portal reads the value you chose.</p>
+
+    <h2>Passport size photo</h2>
+    <p>A passport size photo is usually 3.5 × 4.5 cm or 4.5 × 3.5 cm, shot on a white background with the face filling the frame. For visa and passport forms the file size limit is often generous, so you can keep good quality. Use the passport size preset above, or set the pixels yourself from the table.</p>
+
+    <h2>Which size should I pick?</h2>
+    <ul>
+      <li>Use the pixel size when the portal gives one, for example "200 × 230 pixels" for IBPS.</li>
+      <li>Use the centimetre size when the notice gives one, for example "3.5 × 4.5 cm" for SSC, and pick 200 DPI unless it says otherwise.</li>
+      <li>If both are given, the pixel size wins, because that is what the upload box checks.</li>
+      <li>When a notice is unclear, try the preset and always preview the file in the portal before submitting.</li>
+    </ul>
+
+    <div class="note-box">This site is not affiliated with any exam board, passport office or government department. Sizes change, so confirm the numbers in the current notification before you submit.</div>
+
+    <h2 id="faq">Questions about the photo size converter</h2>
+    <div class="faq">
+      <details><summary>How do I convert centimetres to pixels?</summary><p>Multiply the centimetres by the DPI and divide by 2.54. At 200 DPI, 3.5 cm is 276 pixels and 4.5 cm is 354 pixels.</p></details>
+      <details><summary>How do I reduce a photo to exactly 50 KB?</summary><p>Resize to the required pixel size, save as JPG, then let the tool step the quality down until the file is 50 KB or less. The pixel size is never changed, so the portal check still passes.</p></details>
+      <details><summary>What is the difference between DPI and pixels?</summary><p>Pixels are the width and height of the image. DPI says how many dots fit in an inch, which decides the physical print size. A portal that asks for centimetres needs the DPI value so it can work out the print size from the pixels.</p></details>
+      <details><summary>Can I convert a photo to 20 KB for an exam form?</summary><p>Yes, as long as the pixel size stays exactly as required. If the file will not go below the maximum even at low quality, use a plainer background or fewer pixels, because some portals check both.</p></details>
+      <details><summary>Does the converter work on a phone?</summary><p>Yes. Everything runs in your browser, so it works on any phone or computer without installing anything, and your photo is not uploaded anywhere.</p></details>
+    </div>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>In-content ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <section class="content">
+    <h2>Related tools</h2>
+    <ul class="linklist">
+      <li><a class="btn btn-sm" href="./">All tools</a></li>
+      <li><a class="btn btn-sm" href="./photo-size-converter.html">Photo size converter</a></li>
+      <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+      <li><a class="btn btn-sm" href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+    </ul>
+    <p class="updated">Last updated: November 2026</p>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Exam Photo Resizer</h3>
+        <p class="foot-note">A free browser tool for resizing photos, signatures and documents to the size, DPI and file size required by Indian exam and government portals. Nothing is uploaded, nothing is stored, no account is needed.</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+          <li><a href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+          <li><a href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+          <li><a href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+          <li><a href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+          <li><a href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+          <li><a href="./photo-size-converter.html">Photo size converter</a></li>
+          <li><a href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="./#faq">FAQ</a></li>
+          <li><a href="./#sizes">Size table</a></li>
+          <li><a href="./privacy.html">Privacy policy</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Exam Photo Resizer. Not affiliated with any government or exam body.</span>
+      <span>Images are processed on your device.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./zip-store.js?v=7"></script>
+<script src="./app.js?v=7"></script>
+</body>
+</html>
