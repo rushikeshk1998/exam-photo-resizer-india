@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-preset="nsdl-pan-photo">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PAN Card Photo and Signature Resizer — NSDL and UTIITSL Sizes</title>
+<meta name="description" content="Resize PAN card photo and signature for NSDL and UTIITSL uploads. Set pixels, DPI and KB in one step, including the strict 213 x 213 and 600 DPI signature requirements. Free browser tool." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="canonical" href="https://example.com/pan-photo-signature-resizer.html" />
+<meta property="og:type" content="content" />
+<meta property="og:title" content="PAN Card Photo and Signature Resizer — NSDL and UTIITSL Sizes" />
+<meta property="og:description" content="Resize PAN card photo and signature for NSDL and UTIITSL uploads. Set pixels, DPI and KB in one step, including the strict 213 x 213 and 600 DPI signature requirements. Free browser tool." />
+<meta property="og:url" content="https://example.com/pan-photo-signature-resizer.html" />
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="./styles.css?v=6" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What size is the NSDL PAN photo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Commonly 3.5 x 2.5 cm at 200 DPI, which is 276 x 197 pixels, with the file under 50 KB."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What size is the UTIITSL PAN photo and signature?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The UTI photo is commonly 213 x 213 pixels and the signature 400 x 200 pixels at 600 DPI in black and white, with strict file size limits."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does the PAN portal check DPI?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Some portals do, because the physical print size is calculated from the DPI stored in the file header. The tool writes the chosen DPI into the JPG header on export."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="./index.html"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="./ssc-photo-resizer.html">SSC photo</a>
+      <a href="./ssc-signature-resizer.html">SSC signature</a>
+      <a href="./ibps-signature-resizer.html">IBPS signature</a>
+      <a href="./pan-photo-signature-resizer.html">PAN</a>
+      <a href="./ibps-sbi-kit.html">4-file kit</a>
+    </nav>
+    <div class="head-tools">
+      <button id="themeToggle" class="btn btn-sm" type="button" aria-label="Switch between light and dark mode">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">PAN card photo and signature</p>
+    <h1>PAN card photo and signature resizer (NSDL and UTIITSL)</h1>
+    <p>PAN applications are used every day by students, job applicants and CSC operators, and both portals check the file closely. NSDL and UTIITSL do not use the same numbers, so pick the preset that matches the portal you are applying on.</p>
+    <p>The photo and signature are resized in your browser with the exact pixel size, DPI written into the JPG and the file size kept under the portal limit.</p>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>Ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <div id="tool" class="tool">
+    <section class="card">
+      <div class="card-head">
+        <h2>Image settings</h2>
+        <p class="note" id="presetNote"></p>
+      </div>
+
+      <div class="field">
+        <label for="presetSelect">Exam or portal</label>
+        <select id="presetSelect"></select>
+        <details class="preset-more">
+          <summary>Show all presets</summary>
+          <div class="presets" id="presetChips" role="group" aria-label="Common presets"></div>
+        </details>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="docType">Document type</label>
+          <select id="docType">
+            <option value="photo">Photo</option>
+            <option value="signature">Signature</option>
+            <option value="thumb">Thumb impression</option>
+            <option value="declaration">Handwritten declaration</option>
+            <option value="document">Other document</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">File format</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Size</legend>
+        <div class="grid3">
+          <div class="field"><label for="widthPx">Width (px)</label><input id="widthPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="heightPx">Height (px)</label><input id="heightPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="dpi">DPI</label><input id="dpi" type="number" min="72" inputmode="numeric" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="widthCm">Width (cm)</label><input id="widthCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+          <div class="field"><label for="heightCm">Height (cm)</label><input id="heightCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+        </div>
+        <label class="check" for="lockAspect"><input id="lockAspect" type="checkbox" /> Keep the aspect ratio of the original photo</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>File size</legend>
+        <div class="grid3">
+          <div class="field"><label for="minKb">Minimum KB</label><input id="minKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="maxKb">Maximum KB</label><input id="maxKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label class="check" for="autoCompress"><input id="autoCompress" type="checkbox" checked /> Target KB</label></div>
+        </div>
+        <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> Reach the minimum KB by adding light noise</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Name and date strip</legend>
+        <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> Print name and date on the image</label>
+        <div class="grid2">
+          <div class="field"><label for="slateName">Candidate name</label><input id="slateName" type="text" autocomplete="name" placeholder="Name as in the form" /></div>
+          <div class="field"><label for="slateDate">Date of photo</label><input id="slateDate" type="date" /></div>
+        </div>
+        <div class="field"><label for="slateText">Custom strip text</label><input id="slateText" type="text" placeholder="Leave blank to use name and date" /></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Signature and document cleanup</legend>
+        <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> Enable cleanup</label>
+        <div class="grid2">
+          <div class="field">
+            <label for="enhanceMode">Mode</label>
+            <select id="enhanceMode">
+              <option value="signature">Signature &mdash; darker and thicker strokes</option>
+              <option value="scan">Document &mdash; whiter background</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="field"><label for="threshold">Threshold <span id="thresholdVal">160</span></label><input id="threshold" type="range" min="80" max="220" value="160" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="thickness">Ink thickness <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
+          <div class="field"><label for="contrast">Contrast <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="processBtn" class="btn btn-primary" type="button" disabled>Resize image</button>
+        <button id="downloadBtn" class="btn" type="button" disabled>Download</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Preview</h2>
+        <p class="note">Original on the left, resized file on the right.</p>
+      </div>
+
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>Choose an image</b>
+        <span>or drag and drop JPG, PNG or WebP</span>
+      </label>
+
+      <div class="crop" id="cropPanel" hidden>
+        <h3>Crop</h3>
+        <p class="help">Drag the image to move it. Use zoom to match the output ratio.</p>
+        <canvas id="cropCanvas" class="crop-canvas"></canvas>
+        <div class="crop-row">
+          <div class="field"><label for="cropZoom">Zoom <span id="cropZoomVal">100%</span></label><input id="cropZoom" type="range" min="100" max="300" value="100" /></div>
+          <div class="actions" style="margin:0;">
+            <button id="cropCenterBtn" class="btn btn-sm" type="button">Centre</button>
+            <button id="cropFitBtn" class="btn btn-sm" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <figcaption>Original</figcaption>
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalMeta" class="meta"></div>
+        </figure>
+        <figure>
+          <figcaption>Resized file</figcaption>
+          <canvas id="outputCanvas"></canvas>
+          <div id="outputMeta" class="meta"></div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="content">
+    <h2>NSDL and UTIITSL requirements</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Portal</th><th>Document</th><th>Size</th><th>Pixels</th><th>DPI</th><th>File size</th></tr></thead>
+        <tbody>
+          <tr><td>NSDL (Protean)</td><td>Photo</td><td>3.5 × 2.5 cm</td><td>276 × 197</td><td>200</td><td>Below 50 KB</td></tr>
+          <tr><td>NSDL (Protean)</td><td>Signature</td><td>2 × 4.5 cm</td><td>157 × 354</td><td>200</td><td>Below 50 KB</td></tr>
+          <tr><td>UTIITSL</td><td>Photo</td><td>Square</td><td>213 × 213</td><td>300</td><td>Below 30 KB</td></tr>
+          <tr><td>UTIITSL</td><td>Signature</td><td>Landscape</td><td>400 × 200</td><td>600</td><td>Below 60 KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="help">These are the commonly published values. UTIITSL in particular has tightened its checks, so open the upload screen on the portal and confirm the values shown there before you submit.</p>
+
+    <h2>Why the DPI matters for PAN</h2>
+    <p>The DPI is not only a number in the file name. It is stored inside the JPG header, and the portal reads it to work out the physical print size. The tool writes the DPI value into the file header when it exports, so the image prints at the right size on the card.</p>
+
+    <h2>Photo rules for a PAN card</h2>
+    <ul>
+      <li>Plain white background, no shadows, no other people in the frame.</li>
+      <li>Face centred, looking straight at the camera, with the full face visible.</li>
+      <li>Normal expression, mouth closed, no sunglasses.</li>
+      <li>Recent photo. Some applications ask for one taken in the last few months.</li>
+      <li>Signature in black ink on white paper, signed the same way as on the form.</li>
+    </ul>
+
+    <h2>Common PAN upload problems</h2>
+    <ul>
+      <li><strong>"Image dimension is not as per specification"</strong> — the pixel size was wrong. Use the preset for your portal instead of guessing.</li>
+      <li><strong>"File size should be less than X KB"</strong> — set the maximum KB and let the tool compress it.</li>
+      <li><strong>Signature rejected as unclear</strong> — turn on signature cleanup and crop tightly around the signature.</li>
+      <li><strong>Photo rejected for background</strong> — retake the photo against a plain white wall.</li>
+    </ul>
+
+    <div class="note-box">This site is not affiliated with NSDL, Protean or UTIITSL. The portal preview is the final check.</div>
+
+    <h2 id="faq">Questions about the PAN photo resizer</h2>
+    <div class="faq">
+      <details><summary>What size is the NSDL PAN photo?</summary><p>Commonly 3.5 x 2.5 cm at 200 DPI, which is 276 x 197 pixels, with the file under 50 KB.</p></details>
+      <details><summary>What size is the UTIITSL PAN photo and signature?</summary><p>The UTI photo is commonly 213 x 213 pixels and the signature 400 x 200 pixels at 600 DPI in black and white, with strict file size limits.</p></details>
+      <details><summary>Does the portal really check DPI?</summary><p>Some do, because the physical print size is calculated from the DPI stored in the file. The tool writes the chosen DPI into the JPG header when it saves.</p></details>
+      <details><summary>Can I apply for a PAN for someone else?</summary><p>Yes, but the photo and signature must be of the person the card is for. Many people use this tool at CSC or Jan Seva Kendra counters for applicants who cannot upload themselves.</p></details>
+    </div>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>In-content ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <section class="content">
+    <h2>Related tools</h2>
+    <ul class="linklist">
+      <li><a class="btn btn-sm" href="./index.html">All tools</a></li>
+      <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+      <li><a class="btn btn-sm" href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+    </ul>
+    <p class="updated">Last updated: November 2026</p>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Exam Photo Resizer</h3>
+        <p class="foot-note">A free browser tool for resizing photos, signatures and documents to the size, DPI and file size required by Indian exam and government portals. Nothing is uploaded, nothing is stored, no account is needed.</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+          <li><a href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+          <li><a href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+          <li><a href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+          <li><a href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+          <li><a href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+          <li><a href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="./index.html#faq">FAQ</a></li>
+          <li><a href="./index.html#sizes">Size table</a></li>
+          <li><a href="./privacy.html">Privacy policy</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Exam Photo Resizer. Not affiliated with any government or exam body.</span>
+      <span>Images are processed on your device.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./zip-store.js?v=6"></script>
+<script src="./app.js?v=6"></script>
+</body>
+</html>

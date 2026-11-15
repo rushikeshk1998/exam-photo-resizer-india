@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-preset="upsc-photo">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UPSC Photo Resizer — Square Photo and Signature for UPSC Forms</title>
+<meta name="description" content="Resize photos and signatures for UPSC and other civil service applications. Set exact pixels, DPI and KB, add a name and date strip where the notice asks for it, and preview the result." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="canonical" href="https://example.com/upsc-photo-resizer.html" />
+<meta property="og:type" content="content" />
+<meta property="og:title" content="UPSC Photo Resizer — Square Photo and Signature for UPSC Forms" />
+<meta property="og:description" content="Resize photos and signatures for UPSC and other civil service applications. Set exact pixels, DPI and KB, add a name and date strip where the notice asks for it, and preview the result." />
+<meta property="og:url" content="https://example.com/upsc-photo-resizer.html" />
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="./styles.css?v=6" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What size photo does UPSC ask for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Most civil service applications ask for a square photo, commonly 350 x 350 pixels and above, with a wide file size range of about 20 to 300 KB."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does UPSC need the name and date on the photo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Many notices ask for the candidate's name and the date of the photo to be printed at the bottom of the image. The name and date strip adds that for you."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I wear glasses in my UPSC photo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Most notices allow plain glasses but ask you to remove sunglasses, and some ask you to remove glasses entirely if your eyes are clearly visible without them."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="./index.html"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="./ssc-photo-resizer.html">SSC photo</a>
+      <a href="./ssc-signature-resizer.html">SSC signature</a>
+      <a href="./ibps-signature-resizer.html">IBPS signature</a>
+      <a href="./pan-photo-signature-resizer.html">PAN</a>
+      <a href="./ibps-sbi-kit.html">4-file kit</a>
+    </nav>
+    <div class="head-tools">
+      <button id="themeToggle" class="btn btn-sm" type="button" aria-label="Switch between light and dark mode">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">UPSC photo and signature upload</p>
+    <h1>UPSC photo and signature resizer</h1>
+    <p>UPSC and other civil service applications often ask for a square photo, and several notices also ask for the candidate's name and the date of the photo to be printed on the image itself.</p>
+    <p>Set the exact pixel size and DPI from your notice, print the name and date strip if it is required, and download a JPG that matches the portal checks.</p>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>Ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <div id="tool" class="tool">
+    <section class="card">
+      <div class="card-head">
+        <h2>Image settings</h2>
+        <p class="note" id="presetNote"></p>
+      </div>
+
+      <div class="field">
+        <label for="presetSelect">Exam or portal</label>
+        <select id="presetSelect"></select>
+        <details class="preset-more">
+          <summary>Show all presets</summary>
+          <div class="presets" id="presetChips" role="group" aria-label="Common presets"></div>
+        </details>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="docType">Document type</label>
+          <select id="docType">
+            <option value="photo">Photo</option>
+            <option value="signature">Signature</option>
+            <option value="thumb">Thumb impression</option>
+            <option value="declaration">Handwritten declaration</option>
+            <option value="document">Other document</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">File format</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Size</legend>
+        <div class="grid3">
+          <div class="field"><label for="widthPx">Width (px)</label><input id="widthPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="heightPx">Height (px)</label><input id="heightPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="dpi">DPI</label><input id="dpi" type="number" min="72" inputmode="numeric" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="widthCm">Width (cm)</label><input id="widthCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+          <div class="field"><label for="heightCm">Height (cm)</label><input id="heightCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+        </div>
+        <label class="check" for="lockAspect"><input id="lockAspect" type="checkbox" /> Keep the aspect ratio of the original photo</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>File size</legend>
+        <div class="grid3">
+          <div class="field"><label for="minKb">Minimum KB</label><input id="minKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="maxKb">Maximum KB</label><input id="maxKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label class="check" for="autoCompress"><input id="autoCompress" type="checkbox" checked /> Target KB</label></div>
+        </div>
+        <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> Reach the minimum KB by adding light noise</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Name and date strip</legend>
+        <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> Print name and date on the image</label>
+        <div class="grid2">
+          <div class="field"><label for="slateName">Candidate name</label><input id="slateName" type="text" autocomplete="name" placeholder="Name as in the form" /></div>
+          <div class="field"><label for="slateDate">Date of photo</label><input id="slateDate" type="date" /></div>
+        </div>
+        <div class="field"><label for="slateText">Custom strip text</label><input id="slateText" type="text" placeholder="Leave blank to use name and date" /></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Signature and document cleanup</legend>
+        <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> Enable cleanup</label>
+        <div class="grid2">
+          <div class="field">
+            <label for="enhanceMode">Mode</label>
+            <select id="enhanceMode">
+              <option value="signature">Signature &mdash; darker and thicker strokes</option>
+              <option value="scan">Document &mdash; whiter background</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="field"><label for="threshold">Threshold <span id="thresholdVal">160</span></label><input id="threshold" type="range" min="80" max="220" value="160" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="thickness">Ink thickness <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
+          <div class="field"><label for="contrast">Contrast <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="processBtn" class="btn btn-primary" type="button" disabled>Resize image</button>
+        <button id="downloadBtn" class="btn" type="button" disabled>Download</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Preview</h2>
+        <p class="note">Original on the left, resized file on the right.</p>
+      </div>
+
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>Choose an image</b>
+        <span>or drag and drop JPG, PNG or WebP</span>
+      </label>
+
+      <div class="crop" id="cropPanel" hidden>
+        <h3>Crop</h3>
+        <p class="help">Drag the image to move it. Use zoom to match the output ratio.</p>
+        <canvas id="cropCanvas" class="crop-canvas"></canvas>
+        <div class="crop-row">
+          <div class="field"><label for="cropZoom">Zoom <span id="cropZoomVal">100%</span></label><input id="cropZoom" type="range" min="100" max="300" value="100" /></div>
+          <div class="actions" style="margin:0;">
+            <button id="cropCenterBtn" class="btn btn-sm" type="button">Centre</button>
+            <button id="cropFitBtn" class="btn btn-sm" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <figcaption>Original</figcaption>
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalMeta" class="meta"></div>
+        </figure>
+        <figure>
+          <figcaption>Resized file</figcaption>
+          <canvas id="outputCanvas"></canvas>
+          <div id="outputMeta" class="meta"></div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="content">
+    <h2>UPSC photo sizes</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Application</th><th>Photo</th><th>Signature</th><th>File size</th></tr></thead>
+        <tbody>
+          <tr><td>Civil Services (CSE)</td><td>350 × 350 px and above, square</td><td>350 × 350 px</td><td>20–300 KB</td></tr>
+          <tr><td>NDA and CDS</td><td>Square, as per the notice</td><td>Square, as per the notice</td><td>As per the notice</td></tr>
+          <tr><td>State PSC and lower posts</td><td>Often 3.5 × 4.5 cm</td><td>Often 3.5 × 1.5 cm</td><td>10–50 KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Use the name and date strip when the notice asks</h2>
+    <p>Several notices say the photo must have the candidate's name and the date of photo written or printed at the bottom. Turn on "print name and date on the image", type your name exactly as on the application, pick the date the photo was taken, and the strip is added to the bottom of the resized image.</p>
+
+    <h2>Photo rules for civil service applications</h2>
+    <ul>
+      <li>Face should cover most of the frame, with head and hair fully visible.</li>
+      <li>Plain white or light background, even lighting, no shadows on the face or behind you.</li>
+      <li>No sunglasses. Glasses are usually allowed but some notices ask you to remove them.</li>
+      <li>No filters, no beautification, no collage with other photos.</li>
+      <li>Recent photo, taken within the period mentioned in the notice.</li>
+    </ul>
+
+    <h2>If the portal shows a different size</h2>
+    <p>Notices are updated and sizes are changed for particular cycles. If the portal shows a size that does not match the preset, type the pixel values from the portal into the width and height boxes, set the DPI, and the tool will work from that instead.</p>
+
+    <div class="note-box">This site is not affiliated with UPSC or any state commission. Always read the current notice and check the portal preview before submitting.</div>
+
+    <h2 id="faq">Questions about the UPSC photo resizer</h2>
+    <div class="faq">
+      <details><summary>What size photo does UPSC ask for?</summary><p>Most civil service applications ask for a square photo, commonly 350 x 350 pixels and above, with a wide file size range of about 20 to 300 KB. Check your specific notice.</p></details>
+      <details><summary>Does UPSC need the name and date on the photo?</summary><p>Many notices ask for the candidate's name and the date of the photo to be printed at the bottom of the image. The name and date strip adds that for you.</p></details>
+      <details><summary>Can I wear glasses in my UPSC photo?</summary><p>Most notices allow plain glasses but ask you to remove sunglasses. Some also ask you to remove glasses if your eyes are clearly visible without them. Follow the notice.</p></details>
+      <details><summary>The portal wants a different size than the preset. Can I change it?</summary><p>Yes. Type the pixel size from the portal into the width and height boxes and set the DPI. The tool works from whatever you enter.</p></details>
+    </div>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>In-content ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <section class="content">
+    <h2>Related tools</h2>
+    <ul class="linklist">
+      <li><a class="btn btn-sm" href="./index.html">All tools</a></li>
+      <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+      <li><a class="btn btn-sm" href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+    </ul>
+    <p class="updated">Last updated: November 2026</p>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Exam Photo Resizer</h3>
+        <p class="foot-note">A free browser tool for resizing photos, signatures and documents to the size, DPI and file size required by Indian exam and government portals. Nothing is uploaded, nothing is stored, no account is needed.</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+          <li><a href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+          <li><a href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+          <li><a href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+          <li><a href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+          <li><a href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+          <li><a href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="./index.html#faq">FAQ</a></li>
+          <li><a href="./index.html#sizes">Size table</a></li>
+          <li><a href="./privacy.html">Privacy policy</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Exam Photo Resizer. Not affiliated with any government or exam body.</span>
+      <span>Images are processed on your device.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./zip-store.js?v=6"></script>
+<script src="./app.js?v=6"></script>
+</body>
+</html>

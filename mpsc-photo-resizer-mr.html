@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="mr" data-theme="light" data-preset="mpsc-photo">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MPSC फोटो आणि स्वाक्षरी रीसायजर — 3.5 x 4.5 सेमी, 200 DPI</title>
+<meta name="description" content="MPSC आणि महाराष्ट्र पोलिस भर्तीसाठी फोटो आणि स्वाक्षरी योग्य साइज, DPI आणि KB मध्ये रीसायझ करा. 3.5 x 4.5 सेमी = 276 x 354 पिक्सेल. विनामूल्य, फोटो तुमच्या फोनवरच प्रोसेस होतो." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="canonical" href="https://example.com/mpsc-photo-resizer-mr.html" />
+<link rel="alternate" hreflang="mr" href="https://example.com/mpsc-photo-resizer-mr.html" />
+<link rel="alternate" hreflang="en" href="https://example.com/mpsc-photo-resizer.html" />
+<link rel="alternate" hreflang="x-default" href="https://example.com/mpsc-photo-resizer.html" />
+<link rel="stylesheet" href="./styles.css?v=6" />
+</head>
+<body>
+<a class="skip" href="#tool">टूलकडे जा</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="./mpsc-photo-resizer-mr.html"><span class="brand-dot" aria-hidden="true"></span>फोटो रीसायजर</a>
+    <nav class="head-nav" aria-label="मुख्य">
+      <a href="./index.html">सर्व टूल</a>
+      <a href="./mpsc-photo-resizer.html">English</a>
+      <a href="./ibps-sbi-kit.html">4 फाइल किट</a>
+      <a href="./contact.html">संपर्क</a>
+    </nav>
+    <div class="head-tools">
+      <button id="themeToggle" class="btn btn-sm" type="button" aria-label="लाईट आणि डार्क मोड बदला">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">MPSC &middot; महाराष्ट्र पोलिस भर्ती</p>
+    <h1>MPSC फोटो रीसायजर: 3.5 &times; 4.5 सेमी, 200 DPI, 20&ndash;50 KB</h1>
+    <p>महाराष्ट्र राज्य लोकसेवा आयोग (MPSC) आणि पोलिस भर्ती अशा परिक्षांमध्ये साधारणपणे 3.5 &times; 4.5 सेमीचा फोटो आणि 3.5 &times; 1.5 सेमीची स्वाक्षरी मागितली जाते. नोटिफिकेशनमध्ये साइज सेंटीमीटरमध्ये दिली जाते, पण पोर्टल वर ती पिक्सेलमध्ये तपासली जाते. 200 DPI वर 3.5 सेमी म्हणजे 276 पिक्सेल आणि 4.5 सेमी म्हणजे 354 पिक्सेल.</p>
+    <p>खालील टूलमध्ये फोटो अपलोड करा, क्रॉप करा आणि योग्य पिक्सेल, DPI आणि KB मध्ये फाइल तयार करून डाउनलोड करा. फोटो तुमच्या ब्राउझरमध्येच प्रोसेस होतो, कोणत्याही सर्व्हरवर पाठवला जात नाही.</p>
+  </section>
+
+  <div class="ad" aria-label="जाहिरात">
+    <span>जाहिरात</span>
+    <div>जाहिरातीची जागा &mdash; Google AdSense चा कोड इथे टाका.</div>
+  </div>
+
+  <div id="tool" class="tool">
+    <section class="card">
+      <div class="card-head">
+        <h2>फाइलची सेटिंग</h2>
+        <p class="note" id="presetNote"></p>
+      </div>
+
+      <div class="field">
+        <label for="presetSelect">परीक्षा किंवा पोर्टल</label>
+        <select id="presetSelect"></select>
+        <details class="preset-more">
+          <summary>सर्व प्रीसेट दाखवा</summary>
+          <div class="presets" id="presetChips" role="group" aria-label="नेहमीचे प्रीसेट"></div>
+        </details>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="docType">कागदपत्राचा प्रकार</label>
+          <select id="docType">
+            <option value="photo">फोटो</option>
+            <option value="signature">स्वाक्षरी</option>
+            <option value="thumb">अंगठ्याचा मुद्रा</option>
+            <option value="declaration">हाताने लिहिलेले प्रतिज्ञा पत्र</option>
+            <option value="document">इतर कागदपत्र</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">फाइलचा प्रकार</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>साइज</legend>
+        <div class="grid3">
+          <div class="field"><label for="widthPx">रुंदी (पिक्सेल)</label><input id="widthPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="heightPx">उंची (पिक्सेल)</label><input id="heightPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="dpi">DPI</label><input id="dpi" type="number" min="72" inputmode="numeric" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="widthCm">रुंदी (सेमी)</label><input id="widthCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+          <div class="field"><label for="heightCm">उंची (सेमी)</label><input id="heightCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+        </div>
+        <label class="check" for="lockAspect"><input id="lockAspect" type="checkbox" /> मूळ फोटोचा अनुपात कायम ठेवा</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>फाइलचे आकार</legend>
+        <div class="grid3">
+          <div class="field"><label for="minKb">किमान KB</label><input id="minKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="maxKb">कमाल KB</label><input id="maxKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label class="check" for="autoCompress"><input id="autoCompress" type="checkbox" checked /> KB ला फिट करा</label></div>
+        </div>
+        <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> किमान KB साठी हलके नॉईज जोडा</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>नाव आणि तारीख</legend>
+        <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> फोटोवर नाव आणि तारीख छापा</label>
+        <div class="grid2">
+          <div class="field"><label for="slateName">उमेदवाराचे नाव</label><input id="slateName" type="text" autocomplete="name" placeholder="फॉर्ममधील नाव" /></div>
+          <div class="field"><label for="slateDate">फोटोची तारीख</label><input id="slateDate" type="date" /></div>
+        </div>
+        <div class="field"><label for="slateText">स्वतःचा मजकूर</label><input id="slateText" type="text" placeholder="रिकामे ठेवल्यास नाव आणि तारीख वापरले जातील" /></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>स्वाक्षरी आणि कागदपत्र साफसफी</legend>
+        <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> साफसफी चालू करा</label>
+        <div class="grid2">
+          <div class="field">
+            <label for="enhanceMode">पद्धत</label>
+            <select id="enhanceMode">
+              <option value="signature">स्वाक्षरी &mdash; अक्षर अधिक गडद आणि जाड</option>
+              <option value="scan">कागदपत्र &mdash; पारदर्शक पार्श्वभूमी</option>
+              <option value="off">बंद</option>
+            </select>
+          </div>
+          <div class="field"><label for="threshold">थ्रेशोल्ड <span id="thresholdVal">160</span></label><input id="threshold" type="range" min="80" max="220" value="160" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="thickness">शाईप जाडी <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
+          <div class="field"><label for="contrast">कंट्रास्ट <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="processBtn" class="btn btn-primary" type="button" disabled>फाइल तयार करा</button>
+        <button id="downloadBtn" class="btn" type="button" disabled>डाउनलोड</button>
+        <button id="resetBtn" class="btn" type="button">रीसेट</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>पूर्वावलोक</h2>
+        <p class="note">डावीकडे मूळ फोटो, उजवीकडे तयार फाइल.</p>
+      </div>
+
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>फोटो निवडा</b>
+        <span>किंवा JPG, PNG, WebP इथे ओढा</span>
+      </label>
+
+      <div class="crop" id="cropPanel" hidden>
+        <h3>क्रॉप</h3>
+        <p class="help">फोटो हलवण्यासाठी ओढा. साइजच्या प्रमाणासाठी झूम वापरा.</p>
+        <canvas id="cropCanvas" class="crop-canvas"></canvas>
+        <div class="crop-row">
+          <div class="field"><label for="cropZoom">झूम <span id="cropZoomVal">100%</span></label><input id="cropZoom" type="range" min="100" max="300" value="100" /></div>
+          <div class="actions" style="margin:0;">
+            <button id="cropCenterBtn" class="btn btn-sm" type="button">मध्य</button>
+            <button id="cropFitBtn" class="btn btn-sm" type="button">रीसेट</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <figcaption>मूळ</figcaption>
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalMeta" class="meta"></div>
+        </figure>
+        <figure>
+          <figcaption>तयार फाइल</figcaption>
+          <canvas id="outputCanvas"></canvas>
+          <div id="outputMeta" class="meta"></div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="content">
+    <h2>MPSC फोटो आणि स्वाक्षरीचा आकार</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>कागदपत्र</th><th>साइज</th><th>200 DPI वर</th><th>फाइल आकार</th></tr></thead>
+        <tbody>
+          <tr><td>फोटो</td><td>3.5 &times; 4.5 सेमी</td><td>276 &times; 354 पिक्सेल</td><td>20&ndash;50 KB</td></tr>
+          <tr><td>स्वाक्षरी</td><td>3.5 &times; 1.5 सेमी</td><td>276 &times; 118 पिक्सेल</td><td>10&ndash;20 KB</td></tr>
+          <tr><td>पोलिस भर्ती आणि इतर पदे</td><td>बहुतेक 3.5 &times; 4.5 सेमी</td><td>276 &times; 354 पिक्सेल</td><td>20&ndash;50 KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>फोटो कसा घ्यावा</h2>
+    <ol>
+      <li>पांढऱ्या भिंतीसमोर दिवसाच्या उजेडात फोटो घ्या. उजेड मागे नसावा.</li>
+      <li>डोक्यावर थोडे पांढरं जागा द्या, चेहरा मध्यभागी ठेवा.</li>
+      <li>खालील टूलमध्ये फोटो अपलोड करा, 276 &times; 354 पिक्सेलवर क्रॉप करा.</li>
+      <li>नोटिफिकेशनमधील KB मर्यादा लक्षात ठेवा आणि फाइल डाउनलोड करा.</li>
+      <li>स्वाक्षरीसाठी पांढऱ्या कागदावर काळ्या शाईने स्वाक्षरी करा आणि 276 &times; 118 पिक्सेलवर रीसायझ करा.</li>
+    </ol>
+
+    <h2>सर्वाधार वारंवार येणारी चुका</h2>
+    <ul>
+      <li><strong>फोटोचे परिमाण चुकले</strong> &mdash; नोटिफिकेशनमध्ये सेंटीमीटर आहे, पोर्टल पिक्सेल तपासते. 200 DPI वर 276 &times; 354 वापरा.</li>
+      <li><strong>फाइल आकार मर्यादेत नाही</strong> &mdash; टूलमध्ये किमान आणि कमाल KB भरा.</li>
+      <li><strong>स्वाक्षरी दिसत नाही</strong> &mdash; साफसफी चालू करा आणि स्वाक्षरीवर घनत क्रॉप करा.</li>
+      <li><strong>पार्श्वभूमी पांढरी नाही</strong> &mdash; फोटो पुन्हा घ्या किंवा कागदपत्र पद्धत वापरून पार्श्वभूमी पांढरी करा.</li>
+    </ul>
+
+    <div class="note-box">हे साइट MPSC किंवा कोणत्याही महाराष्ट्र शासकीय संस्थेसोबत संलग्न नाही. नेहमी ताज्या जाहिरातीतील नोंदी तपासा आणि सबमिट करण्यापूर्वी पोर्टलमधील पूर्वावलोक पहा.</div>
+
+    <h2>सामान्य प्रश्न</h2>
+    <div class="faq">
+      <details><summary>MPSC फोटोचा आकार किती असतो?</summary><p>बहुतेक 3.5 &times; 4.5 सेमी, म्हणजे 200 DPI वर 276 &times; 354 पिक्सेल, आणि फाइल 20 ते 50 KB दरम्यान.</p></details>
+      <details><summary>MPSC स्वाक्षरीचा आकार किती असतो?</summary><p>बहुतेक 3.5 &times; 1.5 सेमी, म्हणजे 276 &times; 118 पिक्सेल, आणि फाइल 10 ते 20 KB दरम्यान.</p></details>
+      <details><summary>पोलिस भर्तीतही सारखाच साइज आहे का?</summary><p>बहुतेक जाहिरातींमध्ये सारखा फोटो साइज असतो, पण पिक्सेल आणि KB व्हॅल्यू वेगळ्या असू शकतात. जाहिरातीत दिलेली नोंद थेट टूलमध्ये भरा.</p></details>
+    </div>
+
+    <h2>इतर टूल</h2>
+    <ul class="linklist">
+      <li><a class="btn btn-sm" href="./index.html">सर्व टूल</a></li>
+      <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">English version</a></li>
+      <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI 4 फाइल किट</a></li>
+      <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC फोटो रीसायजर</a></li>
+    </ul>
+    <p class="updated">शेवटचा अद्ययावत: नोव्हेंबर 2026</p>
+  </section>
+
+  <div class="ad" aria-label="जाहिरात">
+    <span>जाहिरात</span>
+    <div>इन-कन्टेन्ट जाहिरातीची जागा &mdash; Google AdSense चा कोड इथे टाका.</div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>फोटो रीसायजर</h3>
+        <p class="foot-note">भारतीय परिक्षा आणि सरकारी पोर्टलसाठी फोटो, स्वाक्षरी आणि कागदपत्र योग्य साइज, DPI आणि KB मध्ये बदलणारे मोफत साधन. फोटो तुमच्या डिव्हाइसवरच प्रोसेस होतात.</p>
+      </div>
+      <div>
+        <h3>टूल</h3>
+        <ul>
+          <li><a href="./mpsc-photo-resizer-mr.html">MPSC फोटो</a></li>
+          <li><a href="./index.html">सर्व टूल</a></li>
+          <li><a href="./ibps-sbi-kit.html">4 फाइल किट</a></li>
+          <li><a href="./ssc-photo-resizer.html">SSC फोटो</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>माहिती</h3>
+        <ul>
+          <li><a href="./privacy.html">गोपनीयता धोरण</a></li>
+          <li><a href="./contact.html">संपर्क</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 फोटो रीसायजर. कोणत्याही सरकारी किंवा परिक्षा संस्थेसोबत संलग्न नाही.</span>
+      <span>फाइल्स तुमच्या डिव्हाइसवरच प्रोसेस होतात.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./zip-store.js?v=6"></script>
+<script src="./app.js?v=6"></script>
+</body>
+</html>

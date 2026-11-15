@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-preset="ssc-photo">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SSC Photo Resizer — 3.5 x 4.5 cm, 20-50 KB, 200 DPI</title>
+<meta name="description" content="Resize your SSC exam photo to 3.5 x 4.5 cm (276 x 354 pixels at 200 DPI) and 20-50 KB JPG. Also works for SSC signature, thumb impression and declaration uploads. Free, in your browser." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="canonical" href="https://example.com/ssc-photo-resizer.html" />
+<meta property="og:type" content="content" />
+<meta property="og:title" content="SSC Photo Resizer — 3.5 x 4.5 cm, 20-50 KB, 200 DPI" />
+<meta property="og:description" content="Resize your SSC exam photo to 3.5 x 4.5 cm (276 x 354 pixels at 200 DPI) and 20-50 KB JPG. Also works for SSC signature, thumb impression and declaration uploads. Free, in your browser." />
+<meta property="og:url" content="https://example.com/ssc-photo-resizer.html" />
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="./styles.css?v=6" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What DPI does SSC want for the photo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "200 DPI is the value used in most SSC notifications. A 3.5 x 4.5 cm photo at 200 DPI equals 276 x 354 pixels."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should the SSC photo background be white?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Usually yes. Most SSC notices ask for a plain white or light background with the face clearly visible."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why is my SSC photo rejected even when the size is correct?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Portals also check the background colour, lighting, shadows, the date of the photo and whether the image was edited. File size is only one of several checks."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use the same resized photo for SSC and another exam?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Every portal checks its own size and file size rule, so resize the photo separately for each exam application."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="./index.html"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="./ssc-photo-resizer.html">SSC photo</a>
+      <a href="./ssc-signature-resizer.html">SSC signature</a>
+      <a href="./ibps-signature-resizer.html">IBPS signature</a>
+      <a href="./pan-photo-signature-resizer.html">PAN</a>
+      <a href="./ibps-sbi-kit.html">4-file kit</a>
+    </nav>
+    <div class="head-tools">
+      <button id="themeToggle" class="btn btn-sm" type="button" aria-label="Switch between light and dark mode">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">SSC photo and signature upload</p>
+    <h1>SSC photo resizer: 3.5 × 4.5 cm, 200 DPI, 20–50 KB</h1>
+    <p>SSC applications ask for a recent passport size photograph with a plain white background, usually 3.5 × 4.5 cm and between 20 KB and 50 KB. The portal checks the file in pixels, so 276 × 354 pixels at 200 DPI is the number you need.</p>
+    <p>Pick the SSC preset below, upload the photo taken on your phone, and the file is resized, compressed and given the right DPI in one step. Nothing is uploaded to a server.</p>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>Ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <div id="tool" class="tool">
+    <section class="card">
+      <div class="card-head">
+        <h2>Image settings</h2>
+        <p class="note" id="presetNote"></p>
+      </div>
+
+      <div class="field">
+        <label for="presetSelect">Exam or portal</label>
+        <select id="presetSelect"></select>
+        <details class="preset-more">
+          <summary>Show all presets</summary>
+          <div class="presets" id="presetChips" role="group" aria-label="Common presets"></div>
+        </details>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="docType">Document type</label>
+          <select id="docType">
+            <option value="photo">Photo</option>
+            <option value="signature">Signature</option>
+            <option value="thumb">Thumb impression</option>
+            <option value="declaration">Handwritten declaration</option>
+            <option value="document">Other document</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">File format</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Size</legend>
+        <div class="grid3">
+          <div class="field"><label for="widthPx">Width (px)</label><input id="widthPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="heightPx">Height (px)</label><input id="heightPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="dpi">DPI</label><input id="dpi" type="number" min="72" inputmode="numeric" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="widthCm">Width (cm)</label><input id="widthCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+          <div class="field"><label for="heightCm">Height (cm)</label><input id="heightCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+        </div>
+        <label class="check" for="lockAspect"><input id="lockAspect" type="checkbox" /> Keep the aspect ratio of the original photo</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>File size</legend>
+        <div class="grid3">
+          <div class="field"><label for="minKb">Minimum KB</label><input id="minKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="maxKb">Maximum KB</label><input id="maxKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label class="check" for="autoCompress"><input id="autoCompress" type="checkbox" checked /> Target KB</label></div>
+        </div>
+        <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> Reach the minimum KB by adding light noise</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Name and date strip</legend>
+        <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> Print name and date on the image</label>
+        <div class="grid2">
+          <div class="field"><label for="slateName">Candidate name</label><input id="slateName" type="text" autocomplete="name" placeholder="Name as in the form" /></div>
+          <div class="field"><label for="slateDate">Date of photo</label><input id="slateDate" type="date" /></div>
+        </div>
+        <div class="field"><label for="slateText">Custom strip text</label><input id="slateText" type="text" placeholder="Leave blank to use name and date" /></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Signature and document cleanup</legend>
+        <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> Enable cleanup</label>
+        <div class="grid2">
+          <div class="field">
+            <label for="enhanceMode">Mode</label>
+            <select id="enhanceMode">
+              <option value="signature">Signature &mdash; darker and thicker strokes</option>
+              <option value="scan">Document &mdash; whiter background</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="field"><label for="threshold">Threshold <span id="thresholdVal">160</span></label><input id="threshold" type="range" min="80" max="220" value="160" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="thickness">Ink thickness <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
+          <div class="field"><label for="contrast">Contrast <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="processBtn" class="btn btn-primary" type="button" disabled>Resize image</button>
+        <button id="downloadBtn" class="btn" type="button" disabled>Download</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Preview</h2>
+        <p class="note">Original on the left, resized file on the right.</p>
+      </div>
+
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>Choose an image</b>
+        <span>or drag and drop JPG, PNG or WebP</span>
+      </label>
+
+      <div class="crop" id="cropPanel" hidden>
+        <h3>Crop</h3>
+        <p class="help">Drag the image to move it. Use zoom to match the output ratio.</p>
+        <canvas id="cropCanvas" class="crop-canvas"></canvas>
+        <div class="crop-row">
+          <div class="field"><label for="cropZoom">Zoom <span id="cropZoomVal">100%</span></label><input id="cropZoom" type="range" min="100" max="300" value="100" /></div>
+          <div class="actions" style="margin:0;">
+            <button id="cropCenterBtn" class="btn btn-sm" type="button">Centre</button>
+            <button id="cropFitBtn" class="btn btn-sm" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <figcaption>Original</figcaption>
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalMeta" class="meta"></div>
+        </figure>
+        <figure>
+          <figcaption>Resized file</figcaption>
+          <canvas id="outputCanvas"></canvas>
+          <div id="outputMeta" class="meta"></div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="content">
+    <h2>SSC photo size in cm and pixels</h2>
+    <p>The notification gives the size in centimetres. Multiply by the DPI and divide by 2.54 to get pixels.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Size</th><th>At 200 DPI</th><th>At 300 DPI</th><th>File size</th></tr></thead>
+        <tbody>
+          <tr><td>3.5 × 4.5 cm</td><td>276 × 354 px</td><td>413 × 531 px</td><td>20–50 KB</td></tr>
+          <tr><td>2.5 × 3.5 cm</td><td>197 × 276 px</td><td>295 × 413 px</td><td>20–50 KB</td></tr>
+          <tr><td>4 × 2 cm (signature)</td><td>140 × 60 px</td><td>240 × 80 px</td><td>10–20 KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How to make the SSC photo pass</h2>
+    <ol>
+      <li>Take the photo against a plain white or light wall, in even light. No shadow on the face or behind the head.</li>
+      <li>Keep the face straight, eyes open, and the whole head and hair visible. Some SSC notices ask for a specific head position, so read the notice.</li>
+      <li>Do not wear glasses if the notification says otherwise, and avoid filters or edited photos.</li>
+      <li>Upload the photo above, crop it to 276 × 354 pixels, and download the JPG.</li>
+      <li>Check the file size is between 20 KB and 50 KB before you upload it to the SSC portal.</li>
+    </ol>
+
+    <h2>Common SSC upload errors</h2>
+    <ul>
+      <li><strong>"Photo size should be 3.5 x 4.5 cm"</strong> — you uploaded the right photo but the wrong pixel size. Use 276 × 354 pixels at 200 DPI.</li>
+      <li><strong>"File size should be between 20 KB and 50 KB"</strong> — set the minimum and maximum KB and let the tool compress the JPG.</li>
+      <li><strong>"Image format not supported"</strong> — save as JPG, not PNG or HEIC.</li>
+      <li><strong>"Photo is not clear" or the face looks dark</strong> — retake the photo with more light in front of you, not behind.</li>
+      <li><strong>Signature rejected</strong> — use the signature resizer below with cleanup turned on, because a signature shrunk to 140 × 60 pixels turns grey without it.</li>
+    </ul>
+
+    <h2>SSC signature and thumb impression</h2>
+    <p>SSC also asks for a signature and, in some exams, a left thumb impression on white paper. The signature is usually 4 × 2 cm or 6 × 2 cm at 10–20 KB, which is 140 × 60 pixels or 240 × 80 pixels at 200 DPI. Sign in black ink on white paper, photograph it flat, and resize it with the <a href="./ssc-signature-resizer.html">SSC signature resizer</a>.</p>
+
+    <div class="note-box">Sizes and KB limits differ between SSC notifications. Confirm the numbers in the current notice before you submit, and always preview the upload in the portal.</div>
+
+    <h2 id="faq">Questions about the SSC photo resizer</h2>
+    <div class="faq">
+      <details><summary>What DPI does SSC want?</summary><p>200 DPI is the usual value in SSC notifications. If your notice mentions a different DPI, change the DPI box in the tool and the pixel size updates automatically.</p></details>
+      <details><summary>Should the background be white or light blue?</summary><p>Follow the notice. Most SSC notices ask for a plain white or light background. If it says white, keep white rather than light blue.</p></details>
+      <details><summary>Can I upload the same photo to several exams?</summary><p>Yes, but the file must match each portal's own rule for that exam. Resize it again for each portal rather than reusing one file everywhere.</p></details>
+      <details><summary>Why is my file rejected even when the size is right?</summary><p>Portals also check the background, the lighting, the date of the photo and whether the file was edited. The size is only one of the checks.</p></details>
+    </div>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>In-content ad space &mdash; add your Google AdSense unit code here.</div>
+  </div>
+
+  <section class="content">
+    <h2>Related tools</h2>
+    <ul class="linklist">
+      <li><a class="btn btn-sm" href="./index.html">All tools</a></li>
+      <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+      <li><a class="btn btn-sm" href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+    </ul>
+    <p class="updated">Last updated: November 2026</p>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Exam Photo Resizer</h3>
+        <p class="foot-note">A free browser tool for resizing photos, signatures and documents to the size, DPI and file size required by Indian exam and government portals. Nothing is uploaded, nothing is stored, no account is needed.</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+          <li><a href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+          <li><a href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+          <li><a href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+          <li><a href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+          <li><a href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+          <li><a href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="./index.html#faq">FAQ</a></li>
+          <li><a href="./index.html#sizes">Size table</a></li>
+          <li><a href="./privacy.html">Privacy policy</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Exam Photo Resizer. Not affiliated with any government or exam body.</span>
+      <span>Images are processed on your device.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./zip-store.js?v=6"></script>
+<script src="./app.js?v=6"></script>
+</body>
+</html>

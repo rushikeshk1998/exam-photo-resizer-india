@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Photo and Signature Resizer for Indian Exam Forms — Exact Size, DPI and KB</title>
+<meta name="description" content="Free online resizer for exam photos, signatures, thumb impressions and handwritten declarations. Set size in cm or pixels, DPI and target KB for SSC, IBPS, SBI, UPSC, MPSC, NTA and PAN portals. Works in your browser." />
+<meta name="theme-color" content="#ffffff" />
+<link rel="canonical" href="https://example.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Photo and Signature Resizer for Indian Exam Forms" />
+<meta property="og:description" content="Resize exam photos, signatures and documents to the exact pixels, DPI and KB your portal asks for. Free, no signup, runs in your browser." />
+<meta property="og:url" content="https://example.com/" />
+<meta name="twitter:card" content="summary" />
+<link rel="stylesheet" href="./styles.css?v=6" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Exam Photo and Signature Resizer",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any",
+  "url": "https://example.com/",
+  "description": "Browser-based tool to resize exam photos, signatures, thumb impressions and handwritten declarations to the size, DPI and file size required by Indian exam and government portals.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "featureList": [
+    "Resize in cm or pixels",
+    "Set DPI metadata",
+    "Target file size in KB",
+    "Name and date strip",
+    "Signature cleanup",
+    "Crop to preset ratio",
+    "Batch kit with ZIP download"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is my photo uploaded to a server?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The image is resized in your browser using the canvas API. The file never leaves your device unless you download it yourself." } },
+    { "@type": "Question", "name": "Why is my signature blurry after resizing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Thin pen strokes turn grey when a large photo is shrunk to a small size such as 140x60 pixels. Turn on signature cleanup so strokes are made darker and slightly thicker before the resize, and crop tightly around the signature." } },
+    { "@type": "Question", "name": "How do I convert cm to pixels?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pixels = cm divided by 2.54 multiplied by DPI. For example 3.5 cm at 200 DPI is 276 pixels and 4.5 cm at 200 DPI is 354 pixels." } },
+    { "@type": "Question", "name": "The file is still above the maximum KB. What should I do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The tool lowers JPG quality automatically and keeps the exact pixel size required. If it still cannot reach the limit, use a plainer background or reduce the dimensions, because portals check both size and KB." } },
+    { "@type": "Question", "name": "My file is below the minimum KB. Can I fix it?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Small images such as a 140x60 pixel signature are rarely large enough to reach a 10 KB minimum. Enable the light noise option to lift the file size into the required range without changing how the image looks." } },
+    { "@type": "Question", "name": "Will the portal accept the file?",
+      "acceptedAnswer": { "@type": "Answer", "text": "This tool cannot guarantee acceptance. Always check the latest official notification for the exam and preview the uploaded file in the portal before submitting." } }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#tool">Skip to the tool</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="./index.html"><span class="brand-dot" aria-hidden="true"></span>Exam Photo Resizer</a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="./ssc-photo-resizer.html">SSC photo</a>
+      <a href="./ssc-signature-resizer.html">SSC signature</a>
+      <a href="./ibps-signature-resizer.html">IBPS signature</a>
+      <a href="./pan-photo-signature-resizer.html">PAN</a>
+      <a href="./ibps-sbi-kit.html">4-file kit</a>
+    </nav>
+    <div class="head-tools">
+      <button id="themeToggle" class="btn btn-sm" type="button" aria-label="Switch between light and dark mode">Dark</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Free · No signup · No upload</p>
+    <h1>Photo and signature resizer for Indian exam forms</h1>
+    <p>Set the size in centimetres or pixels, choose the DPI, and hit a target file size in KB. Use it for the photograph, signature, thumb impression and handwritten declaration that SSC, IBPS, SBI, UPSC, MPSC, NTA and PAN portals ask for.</p>
+    <ol class="steps">
+      <li><b>Step 1</b>Pick your exam and document type.</li>
+      <li><b>Step 2</b>Upload a photo, crop it, and adjust the settings.</li>
+      <li><b>Step 3</b>Download the file and upload it to the portal.</li>
+    </ol>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>Ad space — add your Google AdSense unit code here.</div>
+  </div>
+
+  <div id="tool" class="tool">
+    <section class="card">
+      <div class="card-head">
+        <h2>Image settings</h2>
+        <p class="note" id="presetNote"></p>
+      </div>
+
+      <div class="field">
+        <label for="presetSelect">Exam or portal</label>
+        <select id="presetSelect"></select>
+        <details class="preset-more">
+          <summary>Show all presets</summary>
+          <div class="presets" id="presetChips" role="group" aria-label="Common presets"></div>
+        </details>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="docType">Document type</label>
+          <select id="docType">
+            <option value="photo">Photo</option>
+            <option value="signature">Signature</option>
+            <option value="thumb">Thumb impression</option>
+            <option value="declaration">Handwritten declaration</option>
+            <option value="document">Other document</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">File format</label>
+          <select id="format">
+            <option value="image/jpeg">JPG</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Size</legend>
+        <div class="grid3">
+          <div class="field"><label for="widthPx">Width (px)</label><input id="widthPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="heightPx">Height (px)</label><input id="heightPx" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="dpi">DPI</label><input id="dpi" type="number" min="72" inputmode="numeric" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="widthCm">Width (cm)</label><input id="widthCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+          <div class="field"><label for="heightCm">Height (cm)</label><input id="heightCm" type="number" min="0.01" step="0.01" inputmode="decimal" /></div>
+        </div>
+        <label class="check" for="lockAspect"><input id="lockAspect" type="checkbox" /> Keep the aspect ratio of the original photo</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>File size</legend>
+        <div class="grid3">
+          <div class="field"><label for="minKb">Minimum KB</label><input id="minKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label for="maxKb">Maximum KB</label><input id="maxKb" type="number" min="1" inputmode="numeric" /></div>
+          <div class="field"><label class="check" for="autoCompress"><input id="autoCompress" type="checkbox" checked /> Target KB</label></div>
+        </div>
+        <label class="check" for="padToMin"><input id="padToMin" type="checkbox" /> Reach the minimum KB by adding light noise</label>
+        <p class="help">Useful when a portal asks for at least 10 KB but your small signature file is only 3 KB.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Name and date strip</legend>
+        <label class="check" for="slateOn"><input id="slateOn" type="checkbox" /> Print name and date on the image</label>
+        <div class="grid2">
+          <div class="field"><label for="slateName">Candidate name</label><input id="slateName" type="text" autocomplete="name" placeholder="Name as in the form" /></div>
+          <div class="field"><label for="slateDate">Date of photo</label><input id="slateDate" type="date" /></div>
+        </div>
+        <div class="field"><label for="slateText">Custom strip text</label><input id="slateText" type="text" placeholder="Leave blank to use name and date" /></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Signature and document cleanup</legend>
+        <label class="check" for="enhanceOn"><input id="enhanceOn" type="checkbox" /> Enable cleanup</label>
+        <div class="grid2">
+          <div class="field">
+            <label for="enhanceMode">Mode</label>
+            <select id="enhanceMode">
+              <option value="signature">Signature — darker and thicker strokes</option>
+              <option value="scan">Document — whiter background</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="field"><label for="threshold">Threshold <span id="thresholdVal">160</span></label><input id="threshold" type="range" min="80" max="220" value="160" /></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="thickness">Ink thickness <span id="thicknessVal">1</span></label><input id="thickness" type="range" min="0" max="2" value="1" /></div>
+          <div class="field"><label for="contrast">Contrast <span id="contrastVal">115%</span></label><input id="contrast" type="range" min="80" max="160" value="115" /></div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button id="processBtn" class="btn btn-primary" type="button" disabled>Resize image</button>
+        <button id="downloadBtn" class="btn" type="button" disabled>Download</button>
+        <button id="resetBtn" class="btn" type="button">Reset</button>
+        <a id="kitLink" class="btn" href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Preview</h2>
+        <p class="note">Original on the left, resized file on the right.</p>
+      </div>
+
+      <label class="drop" id="dropZone">
+        <input id="fileInput" type="file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <b>Choose an image</b>
+        <span>or drag and drop JPG, PNG or WebP</span>
+      </label>
+
+      <div class="crop" id="cropPanel" hidden>
+        <h3>Crop</h3>
+        <p class="help">Drag the image to move it. Use zoom to match the output ratio.</p>
+        <canvas id="cropCanvas" class="crop-canvas"></canvas>
+        <div class="crop-row">
+          <div class="field"><label for="cropZoom">Zoom <span id="cropZoomVal">100%</span></label><input id="cropZoom" type="range" min="100" max="300" value="100" /></div>
+          <div class="actions" style="margin:0;">
+            <button id="cropCenterBtn" class="btn btn-sm" type="button">Centre</button>
+            <button id="cropFitBtn" class="btn btn-sm" type="button">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <figure>
+          <figcaption>Original</figcaption>
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalMeta" class="meta"></div>
+        </figure>
+        <figure>
+          <figcaption>Resized file</figcaption>
+          <canvas id="outputCanvas"></canvas>
+          <div id="outputMeta" class="meta"></div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <section class="content">
+    <h2 id="sizes">Common photo and signature sizes for Indian exams</h2>
+    <p>Portals usually give the size in centimetres and the file size in kilobytes, while the upload box checks pixels. This table converts both for you. Always confirm the numbers in the latest notification, because they change between exam cycles.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Exam / portal</th><th>Document</th><th>Size</th><th>Pixels at 200 DPI</th><th>File size</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SSC</td><td>Photo</td><td>3.5 × 4.5 cm</td><td>276 × 354</td><td>20–50 KB</td></tr>
+          <tr><td>SSC</td><td>Signature</td><td>4 × 2 cm or 6 × 2 cm</td><td>140 × 60 to 240 × 80</td><td>10–20 KB</td></tr>
+          <tr><td>IBPS / SBI</td><td>Photo</td><td>4.5 × 3.5 cm</td><td>200 × 230</td><td>20–50 KB</td></tr>
+          <tr><td>IBPS / SBI</td><td>Signature</td><td>3.5 × 1.5 cm</td><td>140 × 60</td><td>10–20 KB</td></tr>
+          <tr><td>IBPS / SBI</td><td>Left thumb impression</td><td>3 × 3 cm</td><td>240 × 240</td><td>20–50 KB</td></tr>
+          <tr><td>IBPS / SBI</td><td>Handwritten declaration</td><td>10 × 5 cm</td><td>800 × 400</td><td>50–100 KB</td></tr>
+          <tr><td>UPSC</td><td>Photo and signature</td><td>Square, varies by exam</td><td>350 × 350 and above</td><td>20–300 KB</td></tr>
+          <tr><td>MPSC</td><td>Photo</td><td>3.5 × 4.5 cm</td><td>276 × 354</td><td>20–50 KB</td></tr>
+          <tr><td>MPSC</td><td>Signature</td><td>3.5 × 1.5 cm</td><td>276 × 118</td><td>10–20 KB</td></tr>
+          <tr><td>NTA (NEET / JEE / CUET)</td><td>Passport photo</td><td>3.5 × 4.5 cm</td><td>276 × 354</td><td>10–200 KB</td></tr>
+          <tr><td>NSDL (PAN)</td><td>Photo</td><td>3.5 × 2.5 cm</td><td>276 × 197</td><td>Below 50 KB</td></tr>
+          <tr><td>NSDL (PAN)</td><td>Signature</td><td>2 × 4.5 cm</td><td>157 × 354</td><td>Below 50 KB</td></tr>
+          <tr><td>UTIITSL (PAN)</td><td>Photo</td><td>Square</td><td>213 × 213</td><td>Below 30 KB</td></tr>
+          <tr><td>UTIITSL (PAN)</td><td>Signature</td><td>Landscape</td><td>400 × 200</td><td>Below 60 KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>How to fix a rejected upload</h2>
+    <p>Most rejections are not about the picture itself. They are about the file. Work through these in order:</p>
+    <ul>
+      <li><strong>"Image should be between 20 KB and 50 KB."</strong> Upload a JPG, set the minimum and maximum KB, and let the tool compress it. Keep the pixel size exactly as the portal expects.</li>
+      <li><strong>"Signature is not clear" or looks blurry.</strong> A 4000-pixel photo shrunk to 140 × 60 turns thin strokes grey. Turn on signature cleanup, crop tightly around the signature, and raise ink thickness to 1 or 2.</li>
+      <li><strong>"Photo size does not match."</strong> Check both numbers. 3.5 × 4.5 cm at 200 DPI is 276 × 354 pixels, not 350 × 450.</li>
+      <li><strong>"Image format not supported."</strong> Use JPG. Some portals reject PNG even when the pixels are right.</li>
+      <li><strong>"Photo is too old" or the date does not match.</strong> Use the name and date strip so the date of photo is printed on the image.</li>
+      <li><strong>Background or shadow problems.</strong> Use document mode to whiten the background, or retake the photo against a plain wall in even light.</li>
+    </ul>
+
+    <h2>How centimetres convert to pixels</h2>
+    <p>One inch is 2.54 cm. Multiply the size in centimetres by the DPI and divide by 2.54:</p>
+    <p><code>pixels = cm ÷ 2.54 × DPI</code></p>
+    <p>So a 3.5 cm wide photo at 200 DPI is 3.5 ÷ 2.54 × 200 = 276 pixels, and 4.5 cm is 354 pixels. At 300 DPI the same photo becomes 413 × 531 pixels. The tool fills in both columns for you, so you never have to calculate it by hand.</p>
+
+    <div class="note-box">
+      This site is not affiliated with SSC, IBPS, SBI, UPSC, NTA, MPSC, NSDL or UTIITSL. Always check the live notification and preview the file in the portal before you submit.
+    </div>
+
+    <h2 id="faq">Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Is my photo uploaded to your server?</summary>
+        <p>No. The image is resized in your browser with the canvas API. Nothing is sent anywhere unless you download the file.</p>
+      </details>
+      <details>
+        <summary>Why does my signature look blurry after compressing it?</summary>
+        <p>Thin pen strokes fade when a large photo is shrunk to a small size like 140 × 60 pixels. Turn on signature cleanup. It darkens the strokes and makes them slightly thicker before the resize, which keeps the signature readable.</p>
+      </details>
+      <details>
+        <summary>What DPI should I choose?</summary>
+        <p>Use the DPI written in the notification. 200 DPI is the usual value for exam photos and signatures. If the portal only gives you centimetres, choose 200 DPI and use the pixel values shown next to it.</p>
+      </details>
+      <details>
+        <summary>Can I use PNG instead of JPG?</summary>
+        <p>You can, but JPG gives you much better control over file size. Most exam portals accept JPG or JPEG only, so JPG is the safer choice.</p>
+      </details>
+      <details>
+        <summary>My file is smaller than the minimum KB. What now?</summary>
+        <p>Small images rarely reach a minimum size. For example, a clean 140 × 60 pixel signature is often only 3 to 5 KB. Turn on "reach the minimum KB" and the tool adds very light noise until the file is large enough without visibly changing the picture.</p>
+      </details>
+      <details>
+        <summary>Does this guarantee that the portal accepts my file?</summary>
+        <p>No. Portals also check the background, the date, the face position, the ink colour and whether the file was taken recently. This tool only handles the size, DPI and file size. Always preview the upload in the portal.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="ad" aria-label="Advertisement">
+    <span>Advertisement</span>
+    <div>In-content ad space — add your Google AdSense unit code here.</div>
+  </div>
+
+  <section class="content">
+    <h2>Tools for each document</h2>
+    <ul class="linklist">
+      <li><a class="btn btn-sm" href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./pan-photo-signature-resizer.html">PAN photo and signature resizer</a></li>
+      <li><a class="btn btn-sm" href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+      <li><a class="btn btn-sm" href="./ibps-sbi-kit.html">IBPS/SBI complete 4-file kit</a></li>
+    </ul>
+    <p class="updated">Last updated: November 2026</p>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Exam Photo Resizer</h3>
+        <p class="foot-note">A free browser tool for resizing photos, signatures and documents to the size, DPI and file size required by Indian exam and government portals. Nothing is uploaded, nothing is stored, no account is needed.</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="./ssc-photo-resizer.html">SSC photo resizer</a></li>
+          <li><a href="./ssc-signature-resizer.html">SSC signature resizer</a></li>
+          <li><a href="./ibps-signature-resizer.html">IBPS/SBI signature resizer</a></li>
+          <li><a href="./pan-photo-signature-resizer.html">PAN photo and signature</a></li>
+          <li><a href="./upsc-photo-resizer.html">UPSC photo resizer</a></li>
+          <li><a href="./mpsc-photo-resizer.html">MPSC photo resizer</a></li>
+          <li><a href="./ibps-sbi-kit.html">IBPS/SBI 4-file kit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <ul>
+          <li><a href="./index.html#faq">FAQ</a></li>
+          <li><a href="./index.html#sizes">Size table</a></li>
+          <li><a href="./privacy.html">Privacy policy</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Exam Photo Resizer. Not affiliated with any government or exam body.</span>
+      <span>Images are processed on your device.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./zip-store.js?v=6"></script>
+<script src="./app.js?v=6"></script>
+</body>
+</html>
