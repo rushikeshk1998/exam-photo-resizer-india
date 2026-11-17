@@ -264,7 +264,7 @@ async function loadFile(file) {
     if (els.processBtn) els.processBtn.disabled = false;
     resetCrop('cover'); drawCropPreview();
     setStatus('Image loaded. Adjust crop/settings, then click Process image.', 'ok');
-  } catch (e) { setStatus('This image could not be loaded. Try JPG or PNG. Some HEIC files may not be supported by your browser.', 'err'); }
+  } catch (e) { setStatus('This image could not be loaded. Try a JPEG (JPG) or PNG file. Some HEIC files may not be supported by your browser.', 'err'); }
 }
 
 function makeCanvas(w,h){ const c=document.createElement('canvas'); c.width=w; c.height=h; return c; }
@@ -353,7 +353,7 @@ async function compressToTarget(canvas,type,minKb,maxKb,dpi,auto,pad){
     const blob = await canvasToBlob(canvas, type, type === 'image/png' ? 1 : 0.92);
     if (!blob) throw new Error('encode');
     const out = type === 'image/jpeg' ? await injectJpegDpi(blob, dpi) : blob;
-    return { blob: out, note: type === 'image/png' ? 'PNG exported. JPG works best for KB limits.' : 'JPG exported. Target KB is off.' };
+    return { blob: out, note: type === 'image/png' ? 'PNG exported. JPEG gives much finer control over file size.' : 'JPEG exported. Target KB is off.' };
   }
   const minB = Math.max(1, Number(minKb) || 1) * 1024;
   const maxB = Math.max(Number(maxKb) || Number(minKb) || 1, Number(minKb) || 1) * 1024;
@@ -467,13 +467,14 @@ async function processImage() {
     const minKb = Number(settings.minKb)||1, maxKb = Math.max(minKb, Number(settings.maxKb)||minKb);
     const sizeKb = blob.size/1024;
     const inRange = settings.format !== 'image/jpeg' || !settings.autoCompress ? true : (sizeKb >= minKb && sizeKb <= maxKb);
-    if (els.outputMeta) els.outputMeta.textContent = `Pixels: ${outW} × ${outH}\nDPI: ${settings.dpi}\nFormat: ${blob.type}\nSize: ${fmtBytes(blob.size)}\nTarget: ${minKb}–${maxKb} KB${settings.format==='image/jpeg'&&settings.autoCompress ? (inRange?' (within range)':' (outside range)') : ''}\n${note}`;
+    const formatLabel = blob.type === 'image/png' ? 'PNG (.png)' : 'JPEG (.jpg)';
+    if (els.outputMeta) els.outputMeta.textContent = `Pixels: ${outW} × ${outH}\nDPI: ${settings.dpi}\nFormat: ${formatLabel}\nSize: ${fmtBytes(blob.size)}\nTarget: ${minKb}–${maxKb} KB${settings.format==='image/jpeg'&&settings.autoCompress ? (inRange?' (within range)':' (outside range)') : ''}\n${note}`;
     setStatus(inRange ? 'Output ready. ' + (note||'') : 'Output ready, but outside target KB. ' + (note||''), inRange ? 'ok' : 'warn');
     if (els.downloadBtn) els.downloadBtn.disabled = false;
   } catch (e) {
     console.error(e);
     const detail = e && e.message ? ' (' + e.message + ')' : '';
-    setStatus('Could not process this image' + detail + '. Try JPG/PNG, or adjust the size/format settings.', 'err');
+    setStatus('Could not process this image' + detail + '. Try JPEG (JPG) or PNG, or adjust the size and format settings.', 'err');
   }
   finally { if (els.processBtn) els.processBtn.disabled = !sourceBitmap; }
 }

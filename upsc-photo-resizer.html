@@ -12,7 +12,7 @@
 <meta property="og:description" content="Resize photos and signatures for UPSC and other civil service applications. Set exact pixels, DPI and KB, add a name and date strip where the notice asks for it, and preview the result." />
 <meta property="og:url" content="https://rushikeshk1998.github.io/exam-photo-resizer-india/upsc-photo-resizer.html" />
 <meta name="twitter:card" content="summary" />
-<link rel="stylesheet" href="./styles.css?v=8" />
+<link rel="stylesheet" href="./styles.css?v=9" />
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -83,9 +83,9 @@
 
     <section class="card upload-card">
       <label class="drop" id="dropZone">
-        <input id="fileInput" type="file" aria-label="Choose an image file" accept="image/*,.jpg,.jpeg,.png,.webp,.heic,.heif" />
+        <input id="fileInput" type="file" aria-label="Choose an image file" accept="image/*,.jpg,.jpeg,.jpe,.jfif,.png,.webp,.heic,.heif" />
         <b>Choose an image</b>
-        <span>or drag and drop JPG, PNG or WebP</span>
+        <span>or drag and drop JPG, JPEG, PNG or WebP</span>
       </label>
     </section>
     <section class="card">
@@ -117,7 +117,7 @@
         <div class="field">
           <label for="format">File format</label>
           <select id="format">
-            <option value="image/jpeg">JPG</option>
+            <option value="image/jpeg">JPEG (JPG)</option>
             <option value="image/png">PNG</option>
           </select>
         </div>
@@ -316,7 +316,7 @@
   </div>
 </footer>
 
-<script src="./zip-store.js?v=8"></script>
-<script src="./app.js?v=8"></script>
+<script src="./zip-store.js?v=9"></script>
+<script src="./app.js?v=9"></script>
 </body>
 </html>

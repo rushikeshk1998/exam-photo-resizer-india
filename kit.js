@@ -20,7 +20,7 @@
       div.className = 'kit-slot';
       div.innerHTML = `
         <h3>${s.title}</h3>
-        <p class="kit-spec">${p.w || '?'} × ${p.h || '?'} px, target ${p.minKb || '?'}–${p.maxKb || '?'} KB, JPG${p.enhance ? ' · cleanup on' : ''}</p>
+        <p class="kit-spec">${p.w || '?'} × ${p.h || '?'} px, target ${p.minKb || '?'}-${p.maxKb || '?'} KB, JPEG${p.enhance ? ' · cleanup on' : ''}</p>
         <div class="kit-row">
           <label class="btn btn-ghost" style="margin:0; cursor:pointer;">Choose file<input data-i="${i}" type="file" accept="${s.accept}" style="display:none" /></label>
           <button class="btn" data-dl="${i}" type="button" ${s.blob ? '' : 'disabled'}>Download</button>
